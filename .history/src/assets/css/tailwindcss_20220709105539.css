@@ -1,0 +1,34 @@
+/*
+  @import url('tailwindcss/base');
+  @import url('tailwindcss/components');
+  @import url('tailwindcss/utilities'); 
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scroll-snap-none {
+    scroll-snap-type: none;
+  }
+  .scroll-snap-x {
+    scroll-snap-type: x;
+  }
+  .scroll-snap-y {
+    scroll-snap-type: y;
+  }
+}
+
+@layer base {
+  @font-face {
+    font-family: 'zql';
+    font-weight: 400;
+    src: url('https://cdn.redlonely.com/fonts/zql.woff2') format('woff');
+  }
+  @font-face {
+    font-family: 'webmo';
+    font-weight: 400;
+    src: url('https://cdn.redlonely.com/fonts/webmo.woff2') format('woff');
+  }
+}

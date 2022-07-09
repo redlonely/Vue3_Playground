@@ -1,0 +1,46 @@
+/*
+  @import url('tailwindcss/base');
+  @import url('tailwindcss/components');
+  @import url('tailwindcss/utilities'); 
+*/
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scroll-snap-none {
+    scroll-snap-type: none;
+  }
+  .scroll-snap-x {
+    scroll-snap-type: x;
+  }
+  .scroll-snap-y {
+    scroll-snap-type: y;
+  }
+}
+
+/* 组件 */
+@layer components {
+  .btn-md {
+    @apply bg-gray-600 text-white font-bold px-3 rounded hover:bg-slate-800;
+  }
+}
+
+/* 全局样式 */
+@layer base {
+  @font-face {
+    font-family: 'zql';
+    font-weight: 400;
+    src: url('https://cdn.redlonely.com/fonts/zql.woff2') format('woff');
+  }
+  @font-face {
+    font-family: 'webmo';
+    font-weight: 400;
+    src: url('https://cdn.redlonely.com/fonts/webmo.woff2') format('woff');
+  }
+
+  .linner-pink {
+    background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+  }
+}

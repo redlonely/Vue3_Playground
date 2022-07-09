@@ -1,0 +1,62 @@
+<script setup lang="ts">
+
+import http, { getRandomAcatar } from '@/http'
+import { useLoadingBar, useMessage } from 'naive-ui'
+import { onMounted, ref } from 'vue';
+import { useCounterStore } from '@/stores/actions/counter'
+
+const $loadingBar = useLoadingBar()
+const $message = useMessage()
+let avatar = $ref<any>('')
+
+
+onMounted(() => {
+  getRandomAcatar({ lx: 'b1', format: 'json' })
+    .then(res => {
+      // 随机头像
+      avatar = res?.imgurl
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+  $message.success('组件加载完毕', { closable: true, duration: 3000 })
+})
+
+const handelClick = () => {
+  $message.success('成功')
+  $loadingBar.start()
+  setTimeout(() => {
+    $loadingBar.finish()
+  }, 2000);
+}
+
+import useCounter from '@/stores/actions/counter'
+
+const increment = () => { }
+const decrement = () => { }
+
+
+</script>
+
+<template>
+  <div id="home" class="h-screen bg-slate-400 grid place-items-center">
+
+    <div class="avatar online">
+      <div class="w-24 rounded-full">
+        <img :src="avatar" />
+      </div>
+    </div>
+
+
+    <button @click="handelClick" class="btn">Button</button>
+
+    <div class="count-to">
+      <button @click="decrement" class="btn">-</button>
+      <input type="text" placeholder="Type here" class="input w-full max-w-xs" />
+      <button @click="increment" class="btn">+</button>
+
+    </div>
+
+  </div>
+</template>

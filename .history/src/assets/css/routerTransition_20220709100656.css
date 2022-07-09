@@ -1,0 +1,29 @@
+/* router view transition fade-slide */
+.fade-slide-leave-active,
+.fade-slide-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-slide-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* router view transition fade-slide */
+.fade-opacity-leave-active,
+.fade-opacity-enter-active {
+  transition: all 0.3s;
+}
+
+.fade-opacity-enter-from {
+  opacity: 0;
+}
+
+.fade-opacity-leave-to {
+  opacity: 0;
+}

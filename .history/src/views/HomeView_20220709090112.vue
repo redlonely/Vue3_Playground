@@ -1,0 +1,49 @@
+<script setup lang="ts">
+
+import http, { getRandomAcatar } from '@/http'
+import { useLoadingBar, useMessage } from 'naive-ui'
+import { onMounted, ref } from 'vue';
+
+const $loadingBar = useLoadingBar()
+const $message = useMessage()
+let avatar = $ref<any>('')
+
+
+onMounted(() => {
+  getRandomAcatar({ lx: 'b1', format: 'json' })
+    .then(res => {
+      // 随机头像
+      avatar = res?.imgurl
+    })
+    .catch(err => {
+      console.log(err)
+    })
+
+  $message.success('组件加载完毕', { closable: true, duration: 3000 })
+})
+
+const handelClick = () => {
+  $message.success('成功')
+  $loadingBar.start()
+  setTimeout(() => {
+    $loadingBar.finish()
+  }, 2000);
+}
+
+
+
+</script>
+
+<template>
+  <div id="home" class="h-screen bg-slate-400 grid place-items-center">
+
+    <div class="avatar online">
+      <div class="w-24 rounded-full">
+        <img :src="avatar" />
+      </div>
+    </div>
+
+
+    <button @click="handelClick" class="btn">Button</button>
+  </div>
+</template>
